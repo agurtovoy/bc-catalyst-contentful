@@ -385,5 +385,3 @@ export default async function Compare({
     </>
   );
 }
-
-export const runtime = 'edge';

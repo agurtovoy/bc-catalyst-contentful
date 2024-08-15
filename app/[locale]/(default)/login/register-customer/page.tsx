@@ -70,5 +70,3 @@ export default async function RegisterCustomer({ params: { locale } }: Props) {
     </div>
   );
 }
-
-export const runtime = 'edge';

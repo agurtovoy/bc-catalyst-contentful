@@ -125,5 +125,3 @@ export default async function Search({ params: { locale }, searchParams }: Props
     </div>
   );
 }
-
-export const runtime = 'edge';

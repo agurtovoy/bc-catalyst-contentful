@@ -91,5 +91,3 @@ export default async function BlogPostPage({ params: { blogId, locale } }: Props
     </div>
   );
 }
-
-export const runtime = 'edge';

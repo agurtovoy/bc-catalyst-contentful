@@ -88,5 +88,3 @@ export default async function NotFound() {
     </>
   );
 }
-
-export const runtime = 'edge';
