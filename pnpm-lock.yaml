@@ -116,6 +116,9 @@ dependencies:
   react:
     specifier: ^18.3.1
     version: 18.3.1
+  react-compare-slider:
+    specifier: 3.1.0
+    version: 3.1.0(react-dom@18.3.1)(react@18.3.1)
   react-day-picker:
     specifier: ^8.10.0
     version: 8.10.1(date-fns@3.6.0)(react@18.3.1)
@@ -6107,6 +6110,17 @@ packages:
       hoist-non-react-statics: 3.3.2
       prop-types: 15.8.1
       react: 18.3.1
+    dev: false
+
+  /react-compare-slider@3.1.0(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-TQVbZYmYyTIeKRmQciVXCmUwHjTThQTON7GfWfzMAOInRRG9tCiQnVXnCUd5DJ5l3Hngh4IEzOb9TG82gjoEhQ==}
+    engines: {node: '>=16.9.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /react-day-picker@8.10.1(date-fns@3.6.0)(react@18.3.1):
