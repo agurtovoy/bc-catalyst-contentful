@@ -13,6 +13,8 @@ import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
 
+import '~/lib/makeswift/components';
+
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
 

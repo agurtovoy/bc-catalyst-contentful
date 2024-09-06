@@ -1,3 +1,5 @@
+'use client';
+
 import { List, Number, Shape, Style, TextInput } from '@makeswift/runtime/controls';
 import { StaticImageData } from 'next/image';
 
