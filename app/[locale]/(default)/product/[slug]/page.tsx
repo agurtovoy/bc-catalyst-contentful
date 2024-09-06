@@ -87,7 +87,8 @@ export default async function Product({ params, searchParams }: ProductPageProps
 
   const category = removeEdgesAndNodes(product.categories).at(0);
 
-  const cmsContent = await getCategoryContent('product', product.sku);
+  // const cmsContent = await getCategoryContent('product', product.sku);
+  const cmsContent = [];
 
   return (
     <>
@@ -100,7 +101,9 @@ export default async function Product({ params, searchParams }: ProductPageProps
         >
           <Gallery noImageText={t('noGalleryText')} product={product} />
           <Details product={product} />
-          {cmsContent.length > 0 && <CmsContent blocks={cmsContent} className="lg:col-span-2 mx-8" />}
+          {cmsContent.length > 0 && (
+            <CmsContent blocks={cmsContent} className="mx-8 lg:col-span-2" />
+          )}
           <div className="lg:col-span-2">
             <Description product={product} />
             <Warranty product={product} />

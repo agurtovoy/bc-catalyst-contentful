@@ -12,7 +12,7 @@ import {
 } from '~/components/product-card-carousel';
 import { LocaleType } from '~/i18n';
 
-import { getCategoryContent } from '~/contentful-client/queries/get-category-content';
+// import { getCategoryContent } from '~/contentful-client/queries/get-category-content';
 import CmsContent from '~/components/cms/cms-content';
 
 interface Props {
@@ -53,13 +53,13 @@ export default async function Home({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: 'Home' });
   const messages = await getMessages({ locale });
 
-  const [ homePageData, cmsContent ] = await Promise.all([
+  const [homePageData, cmsContent] = await Promise.all([
     client.fetch({
       document: HomePageQuery,
       customerId,
       fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
     }),
-    getCategoryContent('home', 'home'),
+    [], // getCategoryContent('home', 'home'),
   ]);
 
   const { data } = homePageData;

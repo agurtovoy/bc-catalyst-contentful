@@ -1,14 +1,7 @@
 import { DocumentNode, print } from 'graphql';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-interface DocumentDecoration<
-  Result = {
-    [key: string]: any;
-  },
-  Variables = {
-    [key: string]: any;
-  },
-> {
+interface DocumentDecoration<Result = Record<string, any>, Variables = Record<string, any>> {
   /** Type to support `@graphql-typed-document-node/core`
    * @internal
    */
@@ -33,21 +26,21 @@ export function normalizeQuery(query: string | DocumentNode | DocumentDecoration
   }
 
   throw new Error('Invalid query type');
-};
+}
 
 // Overload for documents that require variables
 export async function contentfulFetch<TResult, TVariables extends Record<string, unknown>>(config: {
   document: DocumentDecoration<TResult, TVariables>;
   variables: TVariables;
   fetchOptions?: RequestInit;
-}): Promise<{data: TResult}>;
+}): Promise<{ data: TResult }>;
 
 // Overload for documents that do not require variables
 export async function contentfulFetch<TResult>(config: {
   document: DocumentDecoration<TResult, Record<string, never>>;
   variables?: undefined;
   fetchOptions?: RequestInit;
-}): Promise<{data: TResult}>;
+}): Promise<{ data: TResult }>;
 
 export async function contentfulFetch<TResult, TVariables>({
   document,
@@ -57,7 +50,7 @@ export async function contentfulFetch<TResult, TVariables>({
   document: DocumentDecoration<TResult, TVariables>;
   variables?: TVariables;
   fetchOptions?: RequestInit;
-}): Promise<{data: TResult}> {
+}): Promise<{ data: TResult }> {
   const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN } = process.env;
 
   const { cache, headers = {}, ...rest } = fetchOptions;
@@ -65,7 +58,7 @@ export async function contentfulFetch<TResult, TVariables>({
   const query = normalizeQuery(document);
 
   const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID ?? ''}`, 
+    `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID ?? ''}`,
     {
       method: 'POST',
       headers: {
@@ -79,12 +72,12 @@ export async function contentfulFetch<TResult, TVariables>({
       }),
       ...(cache && { cache }),
       ...rest,
-    }
+    },
   );
 
   if (!response.ok) {
-    throw new Error('Unexpected error');
+    throw new Error(`Unexpected error: ${await response.text()}`);
   }
 
-  return response.json() as Promise<{data: TResult}>;
+  return response.json() as Promise<{ data: TResult }>;
 }

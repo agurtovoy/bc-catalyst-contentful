@@ -72,7 +72,8 @@ export default async function Category({ params: { locale, slug }, searchParams 
   const { hasNextPage, hasPreviousPage, endCursor, startCursor } = productsCollection.pageInfo;
 
   const catPath = category.path.replace(/(\/$)/, '').replace(/^\//, '');
-  const cmsContent = await getCategoryContent('category', catPath);
+  // const cmsContent = await getCategoryContent('category', catPath);
+  const cmsContent = [];
 
   return (
     <div className="group">

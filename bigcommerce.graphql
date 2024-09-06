@@ -5256,9 +5256,6 @@ type OrderDigitalLineItem implements OrderLineItemInterface {
   """List of product options."""
   productOptions: [OrderLineItemProductOption!]!
 
-  """Optional image url."""
-  imageUrl: String @deprecated(reason: "Use `image` field instead.")
-
   """Image for the item."""
   image: Image
 }
@@ -5439,9 +5436,6 @@ type OrderPhysicalLineItem implements OrderLineItemInterface {
 
   """Product options."""
   productOptions: [OrderLineItemProductOption!]!
-
-  """Image URL."""
-  imageUrl: String @deprecated(reason: "Use `image` field instead.")
 
   """Image for the item."""
   image: Image
@@ -7209,6 +7203,9 @@ type Settings {
 
   """Store seo information."""
   seo: SeoDetails
+
+  """Store favicon url."""
+  faviconUrl: String
 }
 
 """A connection to a list of items."""
